@@ -15,3 +15,5 @@ export const Medium = () => (
   </label>
 );
 export const Large = () => <Input size='large' placeholder='Large size' />;
+
+Medium.storyName = 'Medium password input'; //reassign the name in the broswer.
