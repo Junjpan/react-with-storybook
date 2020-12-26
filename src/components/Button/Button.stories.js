@@ -1,10 +1,13 @@
 import React from 'react';
 import Button from './Button';
+//import Center from '../Center/Center';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Form/Button', // title should be unqiue for the entire project, this property is mandatory
   component: Button, //component property is optional
+  //decorators: [(story) => <Center>{story()}</Center>], decorator component to style the components
+  //if you want to all the stories has the same decorators, you should add docorator inside the preview.js
   args: {
     children: 'Button',
   },
@@ -22,7 +25,7 @@ export const PrimaryA = Template.bind({});
 
 PrimaryA.args = {
   variant: 'primary',
-  children: 'Primary Args',
+  children: 'Primary Args', //the story level of args will overwrite the component level of args
 };
 
 export const SecondaryA = Template.bind({});
