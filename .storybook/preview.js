@@ -2,6 +2,8 @@
 import React from 'react';
 import { addDecorator } from '@storybook/react';
 import Center from '../src/components/Center/Center';
+import { ChakraProvider, Box } from '@chakra-ui/react';
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
@@ -12,4 +14,24 @@ export const parameters = {
   }, //sorting stories
 };
 
-addDecorator((story) => <Center>{story()}</Center>); //to be able to center all the stories
+//addDecorator((story) => <Center>{story()}</Center>); //to be able to center all the stories
+
+/** method 1 to add global decorator. This example use Chakra theme to the story
+addDecorator((story) => (
+  <ChakraProvider>
+    <Box m='4'>{story()}</Box>
+  </ChakraProvider>
+));
+*/
+
+/**Method 2 to add global decorator. This example add Chakra theme to the story */
+
+export const decorators = [
+  (Story) => (
+    <ChakraProvider>
+      <Box m='16'>
+        <Story />
+      </Box>
+    </ChakraProvider>
+  ),
+];
