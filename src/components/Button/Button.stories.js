@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from './Button';
 import { action, actions } from '@storybook/addon-actions';
+import { text, boolean } from '@storybook/addon-knobs';
 //import Center from '../Center/Center';
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -26,6 +27,8 @@ export const Primary = () => (
     Primary
   </Button>
 );
+
+//showing multiple actions
 export const Secondary = () => (
   <Button {...actions('onClick', 'onMouseOver')} variant='secondary'>
     Primary
@@ -36,12 +39,20 @@ const log = () => {
   console.log('button clicked');
 };
 
+//showing the console.log addon ability
 export const Success = () => (
   <Button variant='success' onClick={log}>
     Primary
   </Button>
 );
-export const Danger = () => <Button variant='danger'>Primary</Button>;
+
+//show the knob function
+//text("the props' name","the initial value of the props"),same to boolean()
+export const Dangerknob = () => (
+  <Button variant='danger' disabled={boolean('Disabled', false)}>
+    {text('Label', 'Danger Knob')}
+  </Button>
+);
 
 //another way to show the story by passing args
 const Template = (args) => <Button {...args} />;
