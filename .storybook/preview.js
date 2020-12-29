@@ -41,8 +41,13 @@ export const decorators = [
 
 addDecorator((storyFn, context) => withConsole()(storyFn)(context));
 addDecorator(withKnobs);
+
 addParameters({
   viewport: {
     viewports: INITIAL_VIEWPORTS,
+  },
+  a11y: {
+    element: '#root',
+    manual: false,
   },
 });
