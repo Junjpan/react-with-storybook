@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import { action, actions } from '@storybook/addon-actions';
 //import Center from '../Center/Center';
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -11,11 +12,35 @@ export default {
   args: {
     children: 'Button',
   },
+  //This only work for the story using args method
+  argTypes: {
+    onClick: { action: 'click' },
+    onMouseOver: { action: 'mouse over' },
+  },
 };
 
-export const Primary = () => <Button variant='primary'>Primary</Button>;
-export const Secondary = () => <Button variant='secondary'>Primary</Button>;
-export const Success = () => <Button variant='success'>Primary</Button>;
+//for the non-args method, we import action from @storybook/addon-actions and directly use inside the component
+//If you want to make sure multiple event are captured, we use {...actions()}
+export const Primary = () => (
+  <Button onClick={action('click handler')} variant='primary'>
+    Primary
+  </Button>
+);
+export const Secondary = () => (
+  <Button {...actions('onClick', 'onMouseOver')} variant='secondary'>
+    Primary
+  </Button>
+);
+
+const log = () => {
+  console.log('button clicked');
+};
+
+export const Success = () => (
+  <Button variant='success' onClick={log}>
+    Primary
+  </Button>
+);
 export const Danger = () => <Button variant='danger'>Primary</Button>;
 
 //another way to show the story by passing args

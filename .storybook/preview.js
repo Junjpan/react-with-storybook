@@ -3,6 +3,7 @@ import React from 'react';
 import { addDecorator } from '@storybook/react';
 import Center from '../src/components/Center/Center';
 import { ChakraProvider, Box } from '@chakra-ui/react';
+import { withConsole } from '@storybook/addon-console';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -35,3 +36,5 @@ export const decorators = [
     </ChakraProvider>
   ),
 ];
+
+addDecorator((storyFn, context) => withConsole()(storyFn)(context));
